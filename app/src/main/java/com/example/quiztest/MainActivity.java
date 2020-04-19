@@ -16,16 +16,16 @@ public class MainActivity extends AppCompatActivity {
     private TextView timer,score,question,bottom;
     private ProgressBar progTimer;
 
-   int secondsRemaining = 60;
+   int secondsRemaining = 30;
     Game g = new Game();
     // the time is 30 s , 1 s is minus
-    CountDownTimer timers = new CountDownTimer(60000,1000) {
+    CountDownTimer timers = new CountDownTimer(30000,1000) {
         @Override
         public void onTick(long millisUntilFinished) {
             secondsRemaining--;
 
             timer.setText(Integer.toString(secondsRemaining) +"sc");
-            progTimer.setProgress(60 - secondsRemaining);
+            progTimer.setProgress(30 - secondsRemaining);
         }
 
         @Override
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 Button start_button = (Button) v;
                 start_button.setVisibility(View.INVISIBLE);
                 // to restart the timer ( so it is not min)
-                secondsRemaining = 60;
+                secondsRemaining = 30;
                 // to make a new game so not the same
                 g = new Game();
                 nextTurn();
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 int answerSelected = Integer.parseInt(buttonClicked.getText().toString());
 
                 // to check if the button works ( super useful)
-                Toast.makeText(MainActivity.this,"answerSelected = " + answerSelected,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this,"answerSelected = " + answerSelected,Toast.LENGTH_SHORT).show();
 
                 g.checkAnswer(answerSelected);
                 score.setText(Integer.toString(g.getScore()) + "pts");
